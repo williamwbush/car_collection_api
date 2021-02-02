@@ -1,0 +1,140 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <!-- Header Section-->
+    <header class="row">
+        <div class="col-12 col-md-6" id="header-text">
+            <h2>Chicagoland's Premier Electric Car Dealership</h2>
+            <h5>Purchase from our wide-ranging collection</h5>
+            <h5>or bring in your vehicle for 5-star service.</h5>
+            <div>
+                <button class="btn btn-primary">View our Selection</button>
+                <button class="btn btn-primary">Schedule an Appointment</button>
+            </div>
+        </div>
+        <!-- Header Image -->
+        <div class="col-12 col-md-6">
+            <img class="header-image" src="../static/images/tesla_dealership.jpeg" alt="Tesla Dealership">
+        </div>
+    </header>
+    <!-- End of Header Section -->
+
+    <!-- Start Middle Section -->
+    <section class="row">
+        <div class="col-12" id="middle-text">
+            <h2>It's Time to Go Electric!</h2>
+            <p>Experience the unmatched performance of an all-electric car!</p>
+        </div>
+    </section>
+    <!-- End of Middle Section -->
+
+    <!-- Collection of Features Section -->
+    <section class="row" id="features-section">
+        <div class="col-12 col-md-4">
+            <img src="../static/images/parking_lot.jpg" alt="electric cars" id="carkeys">
+            <h4>Inventory</h4>
+            <p>
+                We sell every electric car available in the United States!
+            </p>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <img src="../static/images/convertible.jpg" alt="convertible car" id="carkeys">
+            <h4>Trade-In</h4>
+            <p>
+                Schedule a visit to cash in your vehicle.
+            </p>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <img src="../static/images/car_keys.jpg" alt="car keys" id="carkeys">
+            <h4>Finance</h4>
+            <p>
+                Our fast and secure credit application will have you out the door with your new car in minutes.
+            </p>
+        </div>
+    </section>
+    <!-- End of Collection Features -->
+    
+    <!-- Start of Community Section -->
+    <section class="row">
+        <div class="col-12 col-md-6">
+            <img src="../static/images/mechanic.jpg" alt="Mechanic" id="car">
+        </div>
+
+        <div class="col-12 col-md-6">
+            <h4>Our mechanics provide unaparalleled service guaranteed</h4>
+            <p>
+                Schedule an appointment, chat with our technicians, or view your service history, all in one place.
+            </p>
+            <div>
+                <button class="btn btn-primary">Schedule Service</button>
+                <button class="btn btn-primary">Chat with our Service Team</button>
+            </div>
+        </div>
+    </section>
+    <!-- End of Community Section -->
+
+    <!-- Start of Footer -->
+    <footer class="row" id="footer">
+
+        <div class="col-2 col-md-2">
+            <div class="footer-text-flex">
+                <img src="../static/images/nissan leaf.jpg" alt="Nissan Leaf" id="car-img">
+                <h5>2017 Nissan Leaf</h5>
+                <p>$32,525</p>
+                <p>White</p>
+            </div>
+        </div>
+
+        <div class="col-2 col-md-2">
+            <div class="footer-text-flex">
+                <img src="../static/images/audi_e-tron.jpg" alt="Audi E-Tron" id="car-img">
+                <h5>2020 Audi E-Tron</h5>
+                <p>$75,795</p>
+                <p>Red</p>
+            </div>
+        </div>
+
+        <div class="col-2 col-md-2">
+            <div class="footer-text-flex">
+                <img src="../static/images/chevrolet_bolt.jpg" alt="Chevrolet Bolt" id="car-img">
+                <h5>2018 Chevrolet Bolt</h5>
+                <p>$37,495</p>
+                <p>Gray</p>
+            </div>
+        </div>
+
+        <div class="col-2 col-md-2">
+            <div class="footer-text-flex">
+                <img src="../static/images/tesla_model_3.jpg" alt="Tesla Model 3" id="car-img">
+                <h5>2021 Tesla Model 3</h5>
+                <p>$41,190</p>
+                <p>White</p>
+            </div>
+        </div>
+
+        <div class="col-2 col-md-2">
+            <div class="footer-text-flex">
+                <img src="../static/images/porsche_taycan.jpg" alt="Porsche Taycan" id="car-img">
+                <h5>2021 Porsche Taycan</h5>
+                <p>$105,150</p>
+                <p>Silver</p>
+            </div>
+        </div>
+
+        <div class="col-2 col-md-2">
+            <div class="footer-text-flex">
+                <img src="../static/images/jaguar_i-pace.jpg" alt="Jaguar I-Pace" id="car-img">
+                <h5>2018 Jaguar I-Pace</h5>
+                <p>$69,850</p>
+                <p>White</p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+{% endblock content %}

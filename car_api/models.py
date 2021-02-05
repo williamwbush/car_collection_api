@@ -25,7 +25,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), nullable = False)
     password = db.Column(db.String, nullable = True, default = '')
     g_auth_verify = db.Column(db.Boolean, default = False)
-    token = db.Column(db.String, default = '')
+    token = db.Column(db.String, default = '', unique = True)
     date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
     car = db.relationship('Car', backref = 'owner', lazy = True)
 
@@ -69,7 +69,7 @@ class Car(db.Model):
         self.user_id = user_id
 
     def __repr__(self):
-        return f'The following Car has been added: {self.name} which belongs to {self.user_id}'
+        return f'The following Car has been added: {self.make} {self.model} which belongs to {self.user_id}'
 
     def to_dict(self):
         return {

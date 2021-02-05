@@ -10,6 +10,9 @@ from flask_login import LoginManager
 # import for authlib integrations
 from authlib.integrations.flask_client import OAuth
 
+#import for flask-marshmallow
+from flask_marshmallow import Marshmallow
+
 app = Flask(__name__)
 app.config.from_object(Config)
 
@@ -20,4 +23,6 @@ login_manager.login_view = 'signin' #Specify what page to load for NON-AUTHED us
 
 oauth = OAuth(app)
 
-from dealership_api import routes, models
+ma = Marshmallow(app)
+
+from car_api import routes, models

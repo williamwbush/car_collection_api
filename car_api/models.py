@@ -1,4 +1,4 @@
-from dealership_api import app, db, login_manager
+from car_api import app, db, login_manager, ma
 import uuid
 from datetime import datetime
 
@@ -27,6 +27,7 @@ class User(db.Model, UserMixin):
     g_auth_verify = db.Column(db.Boolean, default = False)
     token = db.Column(db.String, default = '')
     date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
+    car = db.relationship('Car', backref = 'owner', lazy = True)
 
     def __init__(self,email,first_name = '', last_name = '', id = '', password = '', g_auth_verify = False):
         self.id = self.set_id()
@@ -49,3 +50,40 @@ class User(db.Model, UserMixin):
     
     def __repr__(self):
         return f'User {self.email} has been added to the database'
+
+class Car(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    make = db.Column(db.String(150))
+    model = db.Column(db.String(150))
+    year = db.Column(db.Integer)
+    color = db.Column(db.String(150))
+    price = db.Column(db.Integer)
+    user_id = db.Column(db.String, db.ForeignKey('user.token'), nullable = False)
+
+    def __init__(self,make,model,year,color,price,user_id):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.color = color
+        self.price = price
+        self.user_id = user_id
+
+    def __repr__(self):
+        return f'The following Car has been added: {self.name} which belongs to {self.user_id}'
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "make": self.make,
+            "model": self.model,
+            "year": self.year,
+            "color": self.color,
+            "price": self.price
+        }
+
+class CarSchema(ma.Schema):
+    class Meta:
+        fields = ['id', 'make', 'model', 'year', 'color', 'price']
+
+car_schema = CarSchema()
+cars_schema = CarSchema(many = True)

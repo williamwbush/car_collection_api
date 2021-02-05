@@ -1,12 +1,14 @@
-from dealership_api import app, db, oauth
+from car_api import app, db, oauth
 
 import os
 
-from flask import render_template, request, redirect, url_for, flash, session
+from car_api.helpers import get_jwt, token_required, verify_owner
 
-# drone_api module imports
-from dealership_api.forms import UserLoginForm
-from dealership_api.models import User, check_password_hash
+from flask import render_template, request, redirect, url_for, flash, session, jsonify
+
+# car_api module imports
+from car_api.forms import UserLoginForm
+from car_api.models import User, check_password_hash, Car, car_schema, cars_schema
 
 # imports for flask login
 from flask_login import login_user, logout_user, current_user, login_required
@@ -70,6 +72,78 @@ def logout():
         for key in list(session.keys()):
             session.pop(key)
     return redirect(url_for('home'))
+
+@app.route('/profile', methods = ['GET'])
+@login_required
+def profile():
+    jwt = get_jwt(current_user)
+    return render_template('profile.html', jwt = jwt)
+
+# CREATE CAR ENDPOINT
+@app.route('/cars', methods = ['POST'])
+@token_required
+def create_car(current_user_token):
+    print(current_user_token)
+    make = request.json['make']
+    model = request.json['model']
+    year = request.json['year']
+    color = request.json['color']
+    price = request.json['price']
+    user_id = current_user_token.token
+
+    car = Car(make,model,year,color,price, user_id = user_id)
+
+    db.session.add(car)
+    db.session.commit()
+
+    response = car_schema.dump(car)
+    return jsonify(response)
+
+# RETRIEVE ALL CARS ENDPOINT
+@app.route('/cars', methods = ['GET'])
+@token_required
+def get_cars(current_user_token):
+    owner, current_user_token = verify_owner(current_user_token)
+    cars = Car.query.filter_by(user_id = owner.user_id).all()
+    response = cars_schema.dump(cars)
+    return jsonify(response)
+
+# RETRIEVE ONE CAR ENDPOINT
+@app.route('/cars/<id>', methods = ['GET'])
+@token_required
+def get_car(current_user_token, id):
+    owner, current_user_token = verify_owner(current_user_token)
+    car = Car.query.get(id)
+    response = car_schema.dump(car)
+    return jsonify(response)
+
+# UPDATE CAR ENDPOINT
+@app.route('/cars/<id>', methods = ['POST','PUT'])
+@token_required
+def update_car(current_user_token,id):
+    owner, current_user_token = verify_owner(current_user_token)
+    car = Car.query.get(id) # GET CAR INSTANCE
+
+    car.make = request.json['make']
+    car.model = request.json['model']
+    car.year = request.json['year']
+    car.color = request.json['color']
+    car.price = request.json['price']
+
+    db.session.commit()
+    response = car_schema.dump(car)
+    return jsonify(response)
+
+# DELETE CAR ENDPOINT
+@app.route('/cars/<id>', methods = ['DELETE'])
+@token_required
+def delete_car(current_user_token,id):
+    owner, current_user_token = verify_owner(current_user_token)
+    car = Car.query.get(id)
+    db.session.delete(car)
+    db.session.commit()
+    response = car_schema.dump(car)
+    return jsonify(response)
 
 # Google OAuth routes and config info
 google = oauth.register(

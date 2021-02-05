@@ -1,7 +1,7 @@
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
- 
+
 class Config():
     """
         Set Config variables for the flask application.

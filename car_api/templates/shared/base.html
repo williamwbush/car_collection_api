@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 <link rel="stylesheet" href="../../static/css/styles.css">
-<title>Car Dealership API</title>
+<title>Car Collection API</title>
 </head>
 <body>
 
@@ -22,13 +22,19 @@
         <div>
             <ul id ="horizontal-list">
                 <a href="">
-                    <li>Auto Electric Chicago</li>
+                    <li>Product</li>
                 </a>
                 <a href="">
-                    <li>Browse the Lineup</li>
+                    <li>API Docs</li>
                 </a>
                 <a href="">
-                    <li>Schedule Service</li>
+                    <li>Pricing</li>
+                </a>
+                <a href="">
+                    <li>Support</li>
+                </a>
+                <a href="{{ url_for('profile') }}">
+                    <li>Profile</li>
                 </a>
                 <!--  User Auth Check for SignIn/Signup nav Buttons  -->
                 {% if current_user.is_authenticated %}

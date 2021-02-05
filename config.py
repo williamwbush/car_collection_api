@@ -1,7 +1,7 @@
 import os
-from dotenv import load_dotenv 
+
 basedir = os.path.abspath(os.path.dirname(__file__))
-load_dotenv(os.path.join(basedir, '.env')) 
+ 
 class Config():
     """
         Set Config variables for the flask application.
@@ -17,4 +17,3 @@ class Config():
         #trying to not get overloaded with info eery time we make a new change to database
         #else it will continue to say "you've made a change here"
 
-    

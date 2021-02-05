@@ -72,7 +72,6 @@ def logout():
     return redirect(url_for('home'))
 
 # Google OAuth routes and config info
-
 google = oauth.register(
     name='google',
     client_id=os.getenv("GOOGLE_CLIENT_ID"),
@@ -94,11 +93,12 @@ def google_auth():
 
 @app.route('/authorize')
 def authorize():
-    google = oath.create_client('google')
+    google = oauth.create_client('google')
     token = google.authorize_access_token()
     response = google.get('userinfo')
     user_info = response.json()
-    user= oauth.google.userinfo()
+    user = oauth.google.userinfo()
+    session['profile'] = user_info
 
     user = User.query.filter_by(email = user_info['email']).first()
     if user:
@@ -134,3 +134,5 @@ def authorize():
 
     print(user_info)
     return redirect(url_for('home'))
+
+    

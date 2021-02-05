@@ -82,8 +82,9 @@ ul#horizontal-list a:nth-last-child(1){
 
 /* Profile Page */
 #welcome{
-    margin-left: 20%;
-    margin-right
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 10vh;
 }
 
 /* Footer Section Styles */

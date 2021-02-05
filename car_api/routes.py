@@ -79,6 +79,20 @@ def profile():
     jwt = get_jwt(current_user)
     return render_template('profile.html', jwt = jwt)
 
+#adding extra nav bar sections
+@app.route('/api_docs', methods = ['GET'])
+def api_docs():
+    return render_template('api_docs.html')
+
+@app.route('/pricing', methods = ['GET'])
+def pricing():
+    return render_template('pricing.html')
+
+@app.route('/support', methods = ['GET'])
+def support():
+    return render_template('support.html')
+#end extra navbar sections
+
 # CREATE CAR ENDPOINT
 @app.route('/cars', methods = ['POST'])
 @token_required

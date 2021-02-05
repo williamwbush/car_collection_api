@@ -7,7 +7,7 @@
 
 /* Target Main Logo Image */
 .ct-nav img{
-    width: 40%;
+    width: 60%;
     max-width: 100%;
     margin-left: 2vw;
 }
@@ -99,9 +99,6 @@ ul#horizontal-list a:nth-last-child(1){
     max-width: 100%;
 }
 
-
-
-#footer{
-    border-top: 3px solid black;
-    margin-top: 20vh;
+#top-title{
+    text-align: center;
 }

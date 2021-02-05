@@ -46,7 +46,7 @@ ul#horizontal-list a:nth-last-child(1){
 /* Start of Middle Section Styles */
 #middle-text{
     text-align: center;
-    padding: 13vh;
+    padding: 5vh;
 }
 
 #middle-text h2{
@@ -54,21 +54,18 @@ ul#horizontal-list a:nth-last-child(1){
 }
 /* End of Middle Section Styles */
 
-/* Start of Features Section Styles */
-#api-image, #graphql-image, #database-image{
-    margin-bottom: 10vh;
-}
 
 #features-section{
     margin: 8vw;
 }
-/* End of Features Section */
+
 
 /* Community Section Styles */
 #car{
     width: 50%;
     max-width: 75%;
-    margin-left: 3vw;
+    margin-right:30%;
+    margin-left:30%;
 }
 
 #carkeys{
@@ -81,6 +78,12 @@ ul#horizontal-list a:nth-last-child(1){
 #car-img{
     width: 20vw;
     max-width: 100%;
+}
+
+/* Profile Page */
+#welcome{
+    margin-left: 20%;
+    margin-right
 }
 
 /* Footer Section Styles */

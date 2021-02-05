@@ -14,6 +14,6 @@ class Config():
         #either way we'll be able to find a database no problem
     SQLALCHEMY_TRACK_MODIFICATIONS = False
         #Turn off update messages from sqlalchemy
-        #trying to not get overloaded with info eery time we make a new change to database
+        #trying to not get overloaded with info every time we make a new change to database
         #else it will continue to say "you've made a change here"
 

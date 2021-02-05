@@ -3,3 +3,4 @@ car-dealership-env/
 __pycache__/
 .env
 migrations/
+ignorethistoo
